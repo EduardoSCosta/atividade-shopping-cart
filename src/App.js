@@ -1,7 +1,9 @@
-function App() {
+import Store from './components/Store';
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>Shopping Cart</h1>
+    <div className='App'>
+      <Store />
     </div>
   );
 }
