@@ -4,6 +4,7 @@ import App from './App';
 import './styles/generic/_box-sizing.css';
 import './styles/generic/_resets.css';
 import './styles/elements/_body.css';
+import './styles/elements/_button.css';
 
 ReactDOM.render(
   <React.StrictMode>
