@@ -27,7 +27,7 @@ const Store = () => {
       </header>
         <h1>Store</h1>
         { (isCurrentPage) ? 
-          <ProductsList />
+          <ProductsList products={products}/>
         :
           <Cart /> 
         }
