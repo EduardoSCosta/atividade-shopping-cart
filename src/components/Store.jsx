@@ -21,7 +21,11 @@ const Store = () => {
   const isCurrentPage = currentPage === PRODUCTS_PAGE;
 
   const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
+    const isAlreadyInCart = cartItems.some(cartItem => cartItem.id === product.id);
+
+    if (!isAlreadyInCart) {
+      setCartItems([...cartItems, product]);
+    }
   }
 
   return (
@@ -30,7 +34,6 @@ const Store = () => {
         <SelectPageButton pageName={PRODUCTS_PAGE} setCurrentPage={setCurrentPage} />
         <SelectPageButton pageName={CART_PAGE} setCurrentPage={setCurrentPage} />
       </header>
-      <h1>Store</h1>
       {(isCurrentPage) ?
         <ProductsList products={products} addToCart={addToCart} />
         :
