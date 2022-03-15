@@ -2,7 +2,7 @@ import '../styles/components/_selectPageBtn.css'
 
 const SelectPageButton = ({pageName, setCurrentPage}) => {
   return (
-    <button className="button--select-page" type='button' onClick={() => setCurrentPage(pageName)}>
+    <button className='button button--select-page' type='button' onClick={() => setCurrentPage(pageName)}>
       {pageName}
     </button>
   );
