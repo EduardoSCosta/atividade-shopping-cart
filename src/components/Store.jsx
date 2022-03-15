@@ -5,13 +5,13 @@ import SelectPageButton from './SelectPageBtn';
 import '../styles/components/_store.css'
 
 const PRODUCTS_LIST = [
-  { name: 'product one', description: 'This is product one.'},
-  { name: 'product two', description: 'This is product two.'},
-  { name: 'product three', description: 'This is product three.'},
-  { name: 'product four', description: 'This is product four.'},
+  { id: 1, name: 'product one', description: 'This is product one.' },
+  { id: 2, name: 'product two', description: 'This is product two.' },
+  { id: 3, name: 'product three', description: 'This is product three.' },
+  { id: 4, name: 'product four', description: 'This is product four.' }
 ]
 const PRODUCTS_PAGE = 'products';
-const CART_PAGE = 'cart'
+const CART_PAGE = 'cart';
 
 const Store = () => {
   const [products, setProducts] = useState(PRODUCTS_LIST);
@@ -19,18 +19,23 @@ const Store = () => {
   const [currentPage, setCurrentPage] = useState(PRODUCTS_PAGE);
 
   const isCurrentPage = currentPage === PRODUCTS_PAGE;
-  return(
+
+  const addToCart = (product) => {
+    setCartItems([...cartItems, product]);
+  }
+
+  return (
     <>
       <header className='header'>
         <SelectPageButton pageName={PRODUCTS_PAGE} setCurrentPage={setCurrentPage} />
         <SelectPageButton pageName={CART_PAGE} setCurrentPage={setCurrentPage} />
       </header>
-        <h1>Store</h1>
-        { (isCurrentPage) ? 
-          <ProductsList products={products}/>
+      <h1>Store</h1>
+      {(isCurrentPage) ?
+        <ProductsList products={products} addToCart={addToCart} />
         :
-          <Cart /> 
-        }
+        <Cart />
+      }
     </>
   );
 }
