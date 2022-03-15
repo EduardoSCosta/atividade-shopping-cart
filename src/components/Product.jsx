@@ -1,6 +1,6 @@
-const Product = () => {
+const Product = ({product, addToCart}) => {
   return (
-    <p>product</p>
+    <p>product placeholder</p>
   );
 }
 
