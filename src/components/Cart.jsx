@@ -1,4 +1,5 @@
-import CartItem from "./CartItem"
+import '../styles/components/_cart.css'
+import CartItem from './CartItem';
 
 const Cart = ({ cartItems, removeFromCart }) => {
   return (
