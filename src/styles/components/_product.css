@@ -1,0 +1,19 @@
+.product {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  width: 200px;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product__name {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.product__add-to-cart-button {
+  background-color: var(--green-300);
+}
