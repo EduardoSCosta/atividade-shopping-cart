@@ -1,6 +1,17 @@
-const Cart = () => {
+import CartItem from "./CartItem"
+
+const Cart = ({ cartItems, removeFromCart }) => {
   return (
-    <h2>Cart</h2>
+    <div className='page'>
+      <h2 className='page__title'>Cart</h2>
+      <div className='cart-items-list'>
+        {cartItems.map((cartItem) => {
+          return (
+            <CartItem key={cartItem.id} cartItem={cartItem} removeFromCart={() => removeFromCart(cartItem)}/>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
