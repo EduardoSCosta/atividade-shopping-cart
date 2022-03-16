@@ -28,6 +28,10 @@ const Store = () => {
     }
   }
 
+  const removeFromCart = (product) => {
+    setCartItems(cartItems.filter(cartItem => cartItem.id !== product.id));
+  }
+
   return (
     <>
       <header className='header'>
@@ -37,7 +41,7 @@ const Store = () => {
       {(isCurrentPage) ?
         <ProductsList products={products} addToCart={addToCart} />
         :
-        <Cart />
+        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
       }
     </>
   );
