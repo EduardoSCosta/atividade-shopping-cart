@@ -1,0 +1,23 @@
+.cart-item {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  margin-bottom: 2px;
+}
+
+.cart-item__name {
+  text-transform: capitalize;
+  font-weight: bold;
+  width: 150px;
+}
+
+.cart-item__description {
+  margin: 0 20px;
+  width: 250px;
+}
+
+.cart-item__remove-from-cart-button {
+  background-color: var(--red-300);
+}
