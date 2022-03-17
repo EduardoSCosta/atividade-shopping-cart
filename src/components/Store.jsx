@@ -13,8 +13,8 @@ const PRODUCTS_LIST = [
 const PRODUCTS_PAGE = 'products';
 const CART_PAGE = 'cart';
 
-const Store = () => {
-  const [products, setProducts] = useState(PRODUCTS_LIST);
+const Store = ({productsList = PRODUCTS_LIST}) => {
+  const [products, setProducts] = useState(productsList);
   const [cartItems, setCartItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(PRODUCTS_PAGE);
 
