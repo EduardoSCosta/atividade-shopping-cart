@@ -7,11 +7,13 @@ describe('<Cart />', () => {
     { id: 2, name: 'second test product', description: 'second test product description' }
   ];
 
-  it('should render all items passed in props', () => {
-    render(<Cart cartItems={cartItems}/>);
+  describe('when the component is rendered', () => {
+    it('should show all items passed in props', () => {
+      render(<Cart cartItems={cartItems} />);
 
-    const cartItemsElements = screen.getAllByTestId('cart-item');
-    
-    expect(cartItemsElements).toHaveLength(2);
+      const cartItemsElements = screen.getAllByTestId('cart-item');
+
+      expect(cartItemsElements).toHaveLength(2);
+    });
   });
 });

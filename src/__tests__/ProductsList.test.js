@@ -7,11 +7,13 @@ describe('<ProductsList />', () => {
     { id: 2, name: 'second test product', description: 'second test product description' }
   ];
 
-  it('should render all products passed in props', () => {
-    render(<ProductsList products={products}/>);
+  describe('when the component is rendered', () => {
+    it('should show all products passed in props', () => {
+      render(<ProductsList products={products} />);
 
-    const productsElements = screen.getAllByTestId('product');
-    
-    expect(productsElements).toHaveLength(2);
+      const productsElements = screen.getAllByTestId('product');
+
+      expect(productsElements).toHaveLength(2);
+    });
   });
 });
