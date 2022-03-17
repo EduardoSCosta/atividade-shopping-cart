@@ -5,35 +5,39 @@ import Product from '../components/Product';
 describe('<Product />', () => {
   const product = { id: 1, name: 'test product', description: 'test description' };
 
-  it('should render the product name passed in props', () => {
-    const addToCartFunction = jest.fn();
+  describe('when the component is rendered', () => {
+    it('should show the product name passed in props', () => {
+      const addToCartFunction = jest.fn();
 
-    render(<Product product={product} addToCart={addToCartFunction}/>)
-    
-    const productNameElement = screen.getByText(product.name);
-    
-    expect(productNameElement).toBeInTheDocument();
+      render(<Product product={product} addToCart={addToCartFunction} />);
+
+      const productNameElement = screen.getByText(product.name);
+
+      expect(productNameElement).toBeInTheDocument();
+    });
+
+    it('should show the product description passed in props', () => {
+      const addToCartFunction = jest.fn();
+
+      render(<Product product={product} addToCart={addToCartFunction} />);
+
+      const productDescriptionElement = screen.getByText(product.description);
+
+      expect(productDescriptionElement).toBeInTheDocument();
+    });
   });
 
-  it('should render the product description passed in props', () => {
-    const addToCartFunction = jest.fn();
+  describe('when the Add to cart button is clicked', () => {
+    it('should call the addToCart function', () => {
+      const addToCartFunction = jest.fn();
 
-    render(<Product product={product} addToCart={addToCartFunction}/>)
-    
-    const productDescriptionElement = screen.getByText(product.description);
-    
-    expect(productDescriptionElement).toBeInTheDocument();
-  });
+      render(<Product product={product} addToCart={addToCartFunction} />);
 
-  it('should call the addToCart function', () => {
-    const addToCartFunction = jest.fn();
+      const addToCartButton = screen.getByRole('button', { name: 'Add to cart' });
 
-    render(<Product product={product} addToCart={addToCartFunction}/>)
+      userEvent.click(addToCartButton);
 
-    const addToCartButton = screen.getByRole('button', {name: 'Add to cart'});
-
-    userEvent.click(addToCartButton)
-
-    expect(addToCartFunction).toHaveBeenCalled();
+      expect(addToCartFunction).toHaveBeenCalled();
+    });
   });
 });
