@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import SelectPageBtn from '../components/SelectPageBtn';
+import SelectPageBtn from '../../components/SelectPageBtn';
 
 describe('<SelectPageBtn />', () => {
   describe('when the button is clicked', () => {
