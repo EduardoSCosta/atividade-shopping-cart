@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import CartItem from '../components/CartItem';
+import CartItem from '../../components/CartItem';
 
 describe('<CartItem />', () => {
   const cartItem = { id: 1, name: 'test cartItem', description: 'test description' };
