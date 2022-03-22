@@ -60,4 +60,20 @@ describe('<Store />', () => {
       expect(cartItemNameElement).not.toBeInTheDocument();
     });
   });
+
+  describe('when Checkout button is clicked', () => {
+    it('should go to checkout page', () => {
+      render(<Store productsList={products} />);
+
+      const cartButton = screen.getByRole('button', { name: 'cart' });
+      userEvent.click(cartButton);
+
+      const checkoutButton = screen.getByRole('button', { name: 'Checkout' });
+      userEvent.click(checkoutButton);
+
+      const checkoutHeadingElement = screen.getByRole('heading', { name: 'Checkout' });
+
+      expect(checkoutHeadingElement).toBeInTheDocument();
+    });
+  });
 });
