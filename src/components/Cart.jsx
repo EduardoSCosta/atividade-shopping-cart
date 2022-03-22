@@ -1,7 +1,7 @@
 import '../styles/components/_cart.css'
 import CartItem from './CartItem';
 
-const Cart = ({ cartItems, removeFromCart }) => {
+const Cart = ({ cartItems, removeFromCart, goToCheckout }) => {
   return (
     <div className='page'>
       <h2 className='page__title'>Cart</h2>
@@ -12,6 +12,9 @@ const Cart = ({ cartItems, removeFromCart }) => {
           );
         })}
       </div>
+      <button className='button button--checkout-page' type='button' onClick={goToCheckout}>
+      Checkout
+    </button>
     </div>
   );
 }

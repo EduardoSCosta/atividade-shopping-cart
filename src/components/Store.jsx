@@ -3,6 +3,7 @@ import Cart from './Cart';
 import ProductsList from './ProductsList';
 import SelectPageButton from './SelectPageBtn';
 import '../styles/components/_store.css'
+import Checkout from './Checkout';
 
 const PRODUCTS_LIST = [
   { id: 1, name: 'product one', description: 'This is product one.' },
@@ -12,13 +13,12 @@ const PRODUCTS_LIST = [
 ]
 const PRODUCTS_PAGE = 'products';
 const CART_PAGE = 'cart';
+const CHECKOUT_PAGE = 'checkout';
 
-const Store = ({productsList = PRODUCTS_LIST}) => {
+const Store = ({ productsList = PRODUCTS_LIST }) => {
   const [products, setProducts] = useState(productsList);
   const [cartItems, setCartItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(PRODUCTS_PAGE);
-
-  const isCurrentPage = currentPage === PRODUCTS_PAGE;
 
   const addToCart = (product) => {
     const isAlreadyInCart = cartItems.some(cartItem => cartItem.id === product.id);
@@ -38,11 +38,13 @@ const Store = ({productsList = PRODUCTS_LIST}) => {
         <SelectPageButton pageName={PRODUCTS_PAGE} setCurrentPage={setCurrentPage} />
         <SelectPageButton pageName={CART_PAGE} setCurrentPage={setCurrentPage} />
       </header>
-      {(isCurrentPage) ?
-        <ProductsList products={products} addToCart={addToCart} />
-        :
-        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
-      }
+      {(currentPage === PRODUCTS_PAGE) && <ProductsList products={products} addToCart={addToCart} />}
+      {(currentPage === CART_PAGE) && <Cart
+        cartItems={cartItems}
+        removeFromCart={removeFromCart}
+        goToCheckout={() => setCurrentPage(CHECKOUT_PAGE)}
+      />}
+      {(currentPage === CHECKOUT_PAGE) && <Checkout />}
     </>
   );
 }
