@@ -49,4 +49,40 @@ describe('<Checkout />', () => {
       expect(stepHeadingElement).toBeInTheDocument();
     });
   });
+
+  describe('when an option is selected', () => {
+    it('should show the selected country in the field', () => {
+      render(<Checkout />);
+
+      const selectCountryElement = screen.getByRole('button', { name: /country ​/i });
+      userEvent.click(selectCountryElement);
+
+      const optionCountryElement = screen.getByRole('option', { name: /brazil/i });
+      userEvent.click(optionCountryElement);
+
+      const selectedCountryElement = screen.getByRole('button', { name: /country brazil/i });
+
+      expect(selectedCountryElement).toBeInTheDocument();
+    });
+
+    it('should show the selected state in the field', () => {
+      render(<Checkout />);
+
+      const selectCountryElement = screen.getByRole('button', { name: /country ​/i });
+      userEvent.click(selectCountryElement);
+
+      const optionCountryElement = screen.getByRole('option', { name: /brazil/i });
+      userEvent.click(optionCountryElement);
+
+      const selectStateElement = screen.getByRole('button', { name: /state\/province\/region ​/i });
+      userEvent.click(selectStateElement);
+
+      const optionStateElement = screen.getByRole('option', { name: /goias/i });
+      userEvent.click(optionStateElement);
+
+      const selectedStateElement = screen.getByRole('button', { name: /state\/province\/region goias/i });
+
+      expect(selectedStateElement).toBeInTheDocument();
+    });
+  });
 });
