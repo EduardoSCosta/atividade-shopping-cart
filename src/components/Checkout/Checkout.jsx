@@ -15,10 +15,21 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step) {
+function getStepContent(
+  step,
+  selectedCountry,
+  selectedState,
+  setSelectedCountry,
+  setSelectedState) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return (
+        <AddressForm
+          selectedCountry={selectedCountry}
+          selectedState={selectedState}
+          onStateChange={setSelectedState}
+          onCountryChange={setSelectedCountry}
+        />);
     case 1:
       return <PaymentForm />;
     case 2:
@@ -32,6 +43,8 @@ const theme = createTheme();
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [selectedCountry, setSelectedCountry] = React.useState('');
+  const [selectedState, setSelectedState] = React.useState('');
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -70,7 +83,12 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {getStepContent(
+                  activeStep,
+                  selectedCountry,
+                  selectedState,
+                  setSelectedCountry,
+                  setSelectedState)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>

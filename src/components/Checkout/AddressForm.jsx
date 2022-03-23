@@ -4,8 +4,24 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import countryAndStatesData from '../../data/countries_states.json';
 
-export default function AddressForm() {
+export default function AddressForm({
+  selectedCountry,
+  selectedState,
+  onStateChange,
+  onCountryChange }) {
+
+  const statesList = selectedCountry ?
+    countryAndStatesData.countries.find(country => country.country === selectedCountry).states :
+    [];
+
+  const updateCountry = (selectedCountryName) => {
+    onCountryChange(selectedCountryName);
+    onStateChange('');
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -58,26 +74,6 @@ export default function AddressForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="shipping address-level2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
             id="zip"
             name="zip"
             label="Zip / Postal code"
@@ -89,13 +85,49 @@ export default function AddressForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="country"
-            name="country"
-            label="Country"
+            id="city"
+            name="city"
+            label="City"
             fullWidth
-            autoComplete="shipping country"
+            autoComplete="shipping address-level2"
             variant="standard"
           />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <FormControl fullWidth>
+            <InputLabel id="country-label">Country</InputLabel>
+            <Select
+              labelId="country-label"
+              id="country"
+              value={selectedCountry}
+              label="Country"
+              onChange={event => updateCountry(event.target.value)}
+            >
+              {countryAndStatesData.countries.map(country => {
+                return (
+                  <MenuItem key={country.country} value={country.country}>{country.country}</MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <FormControl fullWidth>
+            <InputLabel id="states-label">State/Province/Region</InputLabel>
+            <Select
+              labelId="states-label"
+              id="states"
+              value={selectedState}
+              label="State/Province/Region"
+              onChange={event => onStateChange(event.target.value)}
+            >
+              {statesList.map(state => {
+                return (
+                  <MenuItem key={state} value={state}>{state}</MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel

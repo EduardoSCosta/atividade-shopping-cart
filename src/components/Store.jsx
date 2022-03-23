@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Cart from './Cart';
 import ProductsList from './ProductsList';
 import SelectPageButton from './SelectPageBtn';
-import '../styles/components/_store.css'
 import Checkout from './Checkout';
+import '../styles/components/_store.css'
 
 const PRODUCTS_LIST = [
   { id: 1, name: 'product one', description: 'This is product one.' },
@@ -39,11 +39,12 @@ const Store = ({ productsList = PRODUCTS_LIST }) => {
         <SelectPageButton pageName={CART_PAGE} setCurrentPage={setCurrentPage} />
       </header>
       {(currentPage === PRODUCTS_PAGE) && <ProductsList products={products} addToCart={addToCart} />}
-      {(currentPage === CART_PAGE) && <Cart
-        cartItems={cartItems}
-        removeFromCart={removeFromCart}
-        goToCheckout={() => setCurrentPage(CHECKOUT_PAGE)}
-      />}
+      {(currentPage === CART_PAGE) &&
+        <Cart
+          cartItems={cartItems}
+          removeFromCart={removeFromCart}
+          goToCheckout={() => setCurrentPage(CHECKOUT_PAGE)}
+        />}
       {(currentPage === CHECKOUT_PAGE) && <Checkout />}
     </>
   );
