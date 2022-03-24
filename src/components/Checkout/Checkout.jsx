@@ -57,6 +57,10 @@ export default function Checkout() {
     checkValidity();
   }, [activeStep, formValues]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -81,7 +85,14 @@ export default function Checkout() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper component="form" ref={formRef} name="checkout" variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+        <Paper
+        component="form"
+        ref={formRef}
+        onSubmit={handleSubmit}
+        name="checkout"
+        variant="outlined"
+        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+        >
           <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography>
@@ -122,6 +133,7 @@ export default function Checkout() {
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
+                    type="submit"
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>
