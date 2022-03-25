@@ -7,20 +7,10 @@ import Checkbox from '@mui/material/Checkbox';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import countryAndStatesData from '../../data/countries_states.json';
 
-export default function AddressForm({
-  selectedCountry,
-  selectedState,
-  onStateChange,
-  onCountryChange }) {
+export default function AddressForm({ formValues, onFormChange }) {
 
-  const statesList = selectedCountry ?
-    countryAndStatesData.countries.find(country => country.country === selectedCountry).states :
-    [];
-
-  const updateCountry = (selectedCountryName) => {
-    onCountryChange(selectedCountryName);
-    onStateChange('');
-  }
+  const selectedCountry = countryAndStatesData.countries.find(country => country.country === formValues.country);
+  const regionsList = selectedCountry?.states || [];
 
   return (
     <React.Fragment>
@@ -37,6 +27,8 @@ export default function AddressForm({
             fullWidth
             autoComplete="given-name"
             variant="standard"
+            value={formValues.firstName}
+            onChange={event => onFormChange('firstName', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -48,6 +40,8 @@ export default function AddressForm({
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            value={formValues.lastName}
+            onChange={event => onFormChange('lastName', event.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -59,6 +53,8 @@ export default function AddressForm({
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
+            value={formValues.address1}
+            onChange={event => onFormChange('address1', event.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -69,6 +65,8 @@ export default function AddressForm({
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
+            value={formValues.address2}
+            onChange={event => onFormChange('address2', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -80,6 +78,8 @@ export default function AddressForm({
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
+            value={formValues.zipCode}
+            onChange={event => onFormChange('zipCode', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -91,17 +91,20 @@ export default function AddressForm({
             fullWidth
             autoComplete="shipping address-level2"
             variant="standard"
+            value={formValues.city}
+            onChange={event => onFormChange('city', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <InputLabel id="country-label">Country</InputLabel>
             <Select
+              required
               labelId="country-label"
               id="country"
-              value={selectedCountry}
               label="Country"
-              onChange={event => updateCountry(event.target.value)}
+              value={formValues.country}
+              onChange={event => onFormChange('country', event.target.value)}
             >
               {countryAndStatesData.countries.map(country => {
                 return (
@@ -117,11 +120,11 @@ export default function AddressForm({
             <Select
               labelId="states-label"
               id="states"
-              value={selectedState}
               label="State/Province/Region"
-              onChange={event => onStateChange(event.target.value)}
+              value={formValues.region}
+              onChange={event => onFormChange('region', event.target.value)}
             >
-              {statesList.map(state => {
+              {regionsList.map(state => {
                 return (
                   <MenuItem key={state} value={state}>{state}</MenuItem>
                 )
@@ -131,7 +134,14 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+            control={
+              <Checkbox
+                color="secondary"
+                name="saveAddress"
+                value="yes"
+                checked={formValues.rememberAddress}
+                onChange={() => onFormChange('rememberAddress', !formValues.rememberAddress)}
+              />}
             label="Use this address for payment details"
           />
         </Grid>
