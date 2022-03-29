@@ -2,6 +2,7 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   blue300: '#1976d2',
+  gray50: '#fafafa',
   gray100: '#e5e5e5',
   gray200: '#e0e0e0',
   gray300: '#9e9e9e',
@@ -9,7 +10,7 @@ const colors = {
   gray500: '#676767'
 }
 
-const spaces = [0, 2, 4, 8, 16, 32, 64];
+const space = [0, 2, 4, 8, 16, 32, 64];
 
 const fonts = '"Roboto","Helvetica","Arial",sans-serif';
 
@@ -25,7 +26,7 @@ const sizes = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
 
 const theme = {
   colors,
-  spaces,
+  space,
   fonts,
   fontSizes,
   fontWeights,
