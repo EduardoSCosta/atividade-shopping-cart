@@ -56,7 +56,7 @@ const StyledInput = styled.input({
   backgroundColor: 'transparent'
 });
 
-const Input = ({
+export const Input = ({
   required,
   id,
   name,
@@ -81,5 +81,3 @@ const Input = ({
     </InputWrapper>
   );
 }
-
-export default Input;

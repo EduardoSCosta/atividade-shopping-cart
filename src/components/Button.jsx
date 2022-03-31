@@ -23,7 +23,7 @@ const getButtonVariantStyles = (variant, theme) => {
   return variantStyles[variant] || variantStyles.blue
 }
 
-const Button = styled.button({
+export const Button = styled.button({
   padding: ({ theme }) => theme.space[3],
   textTransform: 'uppercase',
   border: 'none',
@@ -35,6 +35,4 @@ const Button = styled.button({
   '&:hover': {
     filter: 'brightness(0.8)'
   }
-})
-
-export default Button;
+});

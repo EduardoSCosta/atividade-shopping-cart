@@ -14,12 +14,10 @@ const getTextVariantStyles = (variant, theme) => {
   return variantStyles[variant] || variantStyles.h1;
 }
 
-const Text = styled.h1({
+export const Text = styled.h1({
     color: ({ theme }) => theme.colors.black,
     marginBottom: ({ gutterBottom, theme }) => gutterBottom ? theme.space[3] : 0,
     textAlign: ({ align }) => align,
     fontSize: ({ variant, theme }) => getTextVariantStyles(variant, theme)
   }
 );
-
-export default Text;
