@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> renders the Button component correctly 1`] = `
+<button
+  className="Button-sc-1l27lxk-0 ggSRfb"
+>
+  TestButton
+</button>
+`;
