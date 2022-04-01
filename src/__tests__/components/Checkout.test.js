@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { ThemeProvider } from 'styled-components';
 import Checkout from '../../components/Checkout';
+import theme from '../../theme';
 
 const fillAddressForm = () => {
   const firstNameElement = screen.getByRole('textbox', { name: /first name/i });
@@ -47,7 +49,7 @@ const clickNextAndBackButton = () => {
 describe('<Checkout />', () => {
   describe('when the component is rendered', () => {
     it('should show the page heading with "Checkout" text', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       const checkoutHeadingElement = screen.getByRole('heading', { name: 'Checkout' });
 
@@ -55,7 +57,7 @@ describe('<Checkout />', () => {
     });
 
     it('should show the current step heading with "Shipping address" text', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       const stepHeadingElement = screen.getByRole('heading', { name: 'Shipping address' });
 
@@ -65,7 +67,7 @@ describe('<Checkout />', () => {
 
   describe('when required inputs are blank', () => {
     it('should disable the Next button in the Address Form', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       const nextStepButton = screen.getByRole('button', { name: 'Next' });
 
@@ -73,7 +75,7 @@ describe('<Checkout />', () => {
     });
 
     it('should disable the Next button in the Payment Form', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
 
@@ -89,7 +91,7 @@ describe('<Checkout />', () => {
 
   describe('when inputs are filled and Next button is clicked one time', () => {
     it('should show the current step heading with "Payment method" text', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
 
@@ -104,7 +106,7 @@ describe('<Checkout />', () => {
 
   describe('when inputs are filled and Next button is clicked two times', () => {
     it('should show the current step heading with "Order summary" text', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
 
@@ -124,7 +126,7 @@ describe('<Checkout />', () => {
 
   describe('when an option is selected', () => {
     it('should show the selected country in the field', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       const selectCountryElement = screen.getByRole('button', { name: /country ​/i });
       userEvent.click(selectCountryElement);
@@ -138,7 +140,7 @@ describe('<Checkout />', () => {
     });
 
     it('should show the selected state in the field', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       const selectCountryElement = screen.getByRole('button', { name: /country ​/i });
       userEvent.click(selectCountryElement);
@@ -160,7 +162,7 @@ describe('<Checkout />', () => {
 
   describe('when Back button is clicked to return to "Shipping address" step', () => {
     it('should keep the first name input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -171,7 +173,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the last name input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -182,7 +184,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the address line 1 input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -193,7 +195,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the address line 2 input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -204,7 +206,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the zip code input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -215,7 +217,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the city input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -226,7 +228,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the country selected', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -237,7 +239,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the state/province/region selected', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
       clickNextAndBackButton();
@@ -250,7 +252,7 @@ describe('<Checkout />', () => {
 
   describe('when Back button is clicked to return to "Payment method" step', () => {
     it('should keep the name on card input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
 
@@ -267,7 +269,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the card number input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
 
@@ -284,7 +286,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the expiry date input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
 
@@ -301,7 +303,7 @@ describe('<Checkout />', () => {
     });
 
     it('should keep the cvv input filled', () => {
-      render(<Checkout />);
+      render(<ThemeProvider theme={theme}><Checkout /></ThemeProvider>);
 
       fillAddressForm();
 

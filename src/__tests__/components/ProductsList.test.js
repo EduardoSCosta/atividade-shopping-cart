@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../theme';
 import ProductsList from '../../components/ProductsList';
 
 describe('<ProductsList />', () => {
@@ -9,7 +11,7 @@ describe('<ProductsList />', () => {
 
   describe('when the component is rendered', () => {
     it('should show all products passed in props', () => {
-      render(<ProductsList products={products} />);
+      render(<ThemeProvider theme={theme}><ProductsList products={products} /></ThemeProvider>);
 
       const productsElements = screen.getAllByTestId('product');
 
