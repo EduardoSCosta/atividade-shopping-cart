@@ -32,7 +32,12 @@ export const Button = styled.button({
   color:({ variant, theme }) => getButtonVariantStyles(variant, theme).color,
   transition: 'filter 0.2s',
 
-  '&:hover': {
+  '&:hover:enabled': {
     filter: 'brightness(0.8)'
-  }
+  },
+
+  '&:disabled': {
+    backgroundColor: ({ theme }) => theme.colors.gray200,
+  },
+
 });

@@ -30,6 +30,7 @@ const getInputWrapperVariantStyles = (variant, theme) => {
 const InputWrapper = styled.div({
   display: 'flex',
   flexDirection: 'column',
+  paddingLeft: ({ theme }) => theme.space[3],
   width: ({ fullWidth }) => fullWidth ? '100%' : 'auto',
   height: ({ theme }) => theme.sizes[0],
   border: ({ variant, theme }) => getInputWrapperVariantStyles(variant, theme).border,
@@ -46,8 +47,7 @@ const InputWrapper = styled.div({
 );
 
 const StyledLabel = styled.label({
-  color: ({ theme }) => theme.colors.black,
-  paddingLeft: ({ theme }) => theme.space[3]
+  color: ({ theme }) => theme.colors.black
 });
 
 const StyledInput = styled.input({
