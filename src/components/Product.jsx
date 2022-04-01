@@ -1,13 +1,15 @@
 import '../styles/components/_product.css';
+import { Button, Text } from '../components';
+import { css } from '@styled-system/css';
 
-const Product = ({product, addToCart}) => {
+const Product = ({ product, addToCart }) => {
   return (
     <div className='product' data-testid='product'>
-      <p className='product__name'>{product.name}</p>
-      <p className='product__description'>{product.description}</p>
-      <button className='button product__add-to-cart-button' type='button' onClick={addToCart}>
+      <Text variant='p' css={css({ textTransform: 'capitalize' })}>{product.name}</Text>
+      <Text variant='p' as='p' css={css({ textTransform: 'capitalize' })}>{product.description}</Text>
+      <Button variant='green' type='button' onClick={addToCart}>
         Add to cart
-      </button>
+      </Button>
     </div>
   );
 }

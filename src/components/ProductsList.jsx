@@ -1,10 +1,19 @@
 import Product from './Product';
+import { Text } from '../components';
+import { css } from '@styled-system/css';
 import '../styles/components/_productsList.css';
 
 const ProductsList = ({ products, addToCart }) => {
   return (
     <div className='page'>
-      <h2 className='page__title'>Products List</h2>
+      <Text variant='h2'
+        css={css({
+          textAlign: 'center',
+          marginY: [4]
+        })}
+      >
+        Products List
+      </Text>
       <div className='products-list'>
         {products.map((product) => {
           return (
