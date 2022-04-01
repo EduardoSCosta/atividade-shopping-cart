@@ -1,20 +1,38 @@
 import '../styles/components/_cart.css'
 import CartItem from './CartItem';
+import { Button, Text } from '../components';
+import { css } from '@styled-system/css';
 
 const Cart = ({ cartItems, removeFromCart, goToCheckout }) => {
   return (
     <div className='page'>
-      <h2 className='page__title'>Cart</h2>
+      <Text variant='h2'
+        css={css({
+          textAlign: 'center',
+          marginY: [4]
+        })}
+      >
+        Cart
+      </Text>
       <div className='cart-items-list'>
         {cartItems.map((cartItem) => {
           return (
-            <CartItem key={cartItem.id} cartItem={cartItem} removeFromCart={() => removeFromCart(cartItem)}/>
+            <CartItem key={cartItem.id} cartItem={cartItem} removeFromCart={() => removeFromCart(cartItem)} />
           );
         })}
       </div>
-      <button className='button button--checkout-page' type='button' onClick={goToCheckout}>
-      Checkout
-    </button>
+      <Button
+        variant='blue'
+        css={css({
+          display: 'block',
+          marginX: 'auto',
+          marginY: [3]
+        })}
+        type='button'
+        onClick={goToCheckout}
+      >
+        Checkout
+      </Button>
     </div>
   );
 }
