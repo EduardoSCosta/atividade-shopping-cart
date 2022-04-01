@@ -1,21 +1,21 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { Input, Text } from '../../components';
 
 export default function PaymentForm({ formValues, onFormChange }) {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Text variant="h4" gutterBottom>
         Payment method
-      </Typography>
+      </Text>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <TextField
+          <Input
             required
             id="cardName"
+            name="cardName"
             label="Name on card"
             fullWidth
             autoComplete="cc-name"
@@ -25,9 +25,10 @@ export default function PaymentForm({ formValues, onFormChange }) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <Input
             required
             id="cardNumber"
+            name="cardNumber"
             label="Card number"
             fullWidth
             autoComplete="cc-number"
@@ -37,9 +38,10 @@ export default function PaymentForm({ formValues, onFormChange }) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <Input
             required
             id="expDate"
+            name="expDate"
             label="Expiry date"
             fullWidth
             autoComplete="cc-exp"
@@ -49,9 +51,10 @@ export default function PaymentForm({ formValues, onFormChange }) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <Input
             required
             id="cvv"
+            name="cvv"
             label="CVV"
             helperText="Last three digits on signature strip"
             fullWidth

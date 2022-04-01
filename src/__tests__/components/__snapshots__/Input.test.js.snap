@@ -2,10 +2,10 @@
 
 exports[`<Input /> renders the Input component correctly 1`] = `
 <div
-  className="Input__InputWrapper-sc-xsgpoy-0 jHeDlm"
+  className="Input__InputWrapper-sc-xsgpoy-0 gvLVZH"
 >
   <label
-    className="Input__StyledLabel-sc-xsgpoy-1 feVAIP"
+    className="Input__StyledLabel-sc-xsgpoy-1 biWHSv"
   />
   <input
     className="Input__StyledInput-sc-xsgpoy-2 iWyBLt"

@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
 import AddressForm from '../../components/Checkout/AddressForm';
+import theme from '../../theme';
 
 describe('<AdressForm />', () => {
   describe('when the component is rendered', () => {
@@ -21,7 +23,7 @@ describe('<AdressForm />', () => {
     }
 
     it('should show an empty select country field', () => {
-      render(<AddressForm formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><AddressForm formValues={formValues} /></ThemeProvider>);
 
       const selectCountryElement = screen.getByRole('button', { name: /country ​/i });
 
@@ -29,7 +31,7 @@ describe('<AdressForm />', () => {
     });
 
     it('should show an empty select state field', () => {
-      render(<AddressForm formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><AddressForm formValues={formValues} /></ThemeProvider>);
 
       const selectStateElement = screen.getByRole('button', { name: /state\/province\/region ​/i });
 

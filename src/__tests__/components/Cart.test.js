@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../theme';
 import Cart from '../../components/Cart';
 
 describe('<Cart />', () => {
@@ -9,7 +11,7 @@ describe('<Cart />', () => {
 
   describe('when the component is rendered', () => {
     it('should show all items passed in props', () => {
-      render(<Cart cartItems={cartItems} />);
+      render(<ThemeProvider theme={theme}><Cart cartItems={cartItems} /></ThemeProvider>);
 
       const cartItemsElements = screen.getAllByTestId('cart-item');
 

@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { ThemeProvider } from 'styled-components';
 import Store from '../../components/Store';
+import theme from '../../theme';
 
 describe('<Store />', () => {
   const products = [
@@ -10,7 +12,7 @@ describe('<Store />', () => {
 
   describe('when the component is rendered', () => {
     it('should show a product with the name passed in props', () => {
-      render(<Store productsList={products} />);
+      render(<ThemeProvider theme={theme}><Store productsList={products} /></ThemeProvider>);
 
       const productNameElement = screen.getByText(products[0].name);
 
@@ -18,7 +20,7 @@ describe('<Store />', () => {
     });
 
     it('should show a product with the description passed in props', () => {
-      render(<Store productsList={products} />);
+      render(<ThemeProvider theme={theme}><Store productsList={products} /></ThemeProvider>);
 
       const productDescriptionElement = screen.getByText(products[0].description);
 
@@ -28,7 +30,7 @@ describe('<Store />', () => {
 
   describe('when Add to cart button is clicked', () => {
     it('should add the product in the cart', () => {
-      render(<Store productsList={products} />);
+      render(<ThemeProvider theme={theme}><Store productsList={products} /></ThemeProvider>);
 
       const addToCartButton = screen.getAllByRole('button', { name: 'Add to cart' });
       const cartButton = screen.getByRole('button', { name: 'cart' });
@@ -44,7 +46,7 @@ describe('<Store />', () => {
 
   describe('when Remove from cart button is clicked', () => {
     it('should remove the item from cart', () => {
-      render(<Store productsList={products} />);
+      render(<ThemeProvider theme={theme}><Store productsList={products} /></ThemeProvider>);
 
       const addToCartButton = screen.getAllByRole('button', { name: 'Add to cart' });
       const cartButton = screen.getByRole('button', { name: 'cart' });
@@ -63,7 +65,7 @@ describe('<Store />', () => {
 
   describe('when Checkout button is clicked', () => {
     it('should go to checkout page', () => {
-      render(<Store productsList={products} />);
+      render(<ThemeProvider theme={theme}><Store productsList={products} /></ThemeProvider>);
 
       const cartButton = screen.getByRole('button', { name: 'cart' });
       userEvent.click(cartButton);
@@ -79,7 +81,7 @@ describe('<Store />', () => {
 
   describe('when items are added to the cart', () => {
     it('should show the cart items in the checkout review', () => {
-      render(<Store productsList={products} />);
+      render(<ThemeProvider theme={theme}><Store productsList={products} /></ThemeProvider>);
 
       const addToCartButton = screen.getAllByRole('button', { name: 'Add to cart' });
       const cartButton = screen.getByRole('button', { name: 'cart' });

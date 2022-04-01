@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../theme';
 import Review from '../../components/Checkout/Review';
 
 describe('<Review />', () => {
@@ -21,7 +23,7 @@ describe('<Review />', () => {
     };
     
     it('should show the first and last name passed in props', () => {
-      render(<Review formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><Review formValues={formValues} /></ThemeProvider>);
 
       const nameElement = screen.getAllByText(`${formValues.firstName} ${formValues.lastName}`);
 
@@ -29,7 +31,7 @@ describe('<Review />', () => {
     });
 
     it('should show the addresses passed in props', () => {
-      render(<Review formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><Review formValues={formValues} /></ThemeProvider>);
 
       const addressElement = screen.getByText(`${formValues.address1}, ${formValues.address2}`);
 
@@ -37,7 +39,7 @@ describe('<Review />', () => {
     });
 
     it('should show the zip code and city passed in props', () => {
-      render(<Review formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><Review formValues={formValues} /></ThemeProvider>);
 
       const zipAndCityElement = screen.getByText(`${formValues.zipCode}, ${formValues.city}`);
 
@@ -45,7 +47,7 @@ describe('<Review />', () => {
     });
 
     it('should show the country and state/province/region passed in props', () => {
-      render(<Review formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><Review formValues={formValues} /></ThemeProvider>);
 
       const countryAndRegionElement = screen.getByText(`${formValues.country}, ${formValues.region}`);
 
@@ -53,7 +55,7 @@ describe('<Review />', () => {
     });
 
     it('should show the name on card passed in props', () => {
-      render(<Review formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><Review formValues={formValues} /></ThemeProvider>);
 
       const nameElement = screen.getAllByText(formValues.nameOnCard);
 
@@ -61,7 +63,7 @@ describe('<Review />', () => {
     });
 
     it('should show only the last four number of the card passed in props', () => {
-      render(<Review formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><Review formValues={formValues} /></ThemeProvider>);
 
       const cardNumberElement = screen.getByText(`XXXX-XXXX-XXXX-${formValues.cardNumber.slice(-4)}`);
 
@@ -69,7 +71,7 @@ describe('<Review />', () => {
     });
 
     it('should show the expiry date passed in props', () => {
-      render(<Review formValues={formValues} />);
+      render(<ThemeProvider theme={theme}><Review formValues={formValues} /></ThemeProvider>);
 
       const expiryDateElement = screen.getByText(formValues.expiryDate);
 

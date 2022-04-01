@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../theme';
 import CartItem from '../../components/CartItem';
 
 describe('<CartItem />', () => {
@@ -9,7 +11,10 @@ describe('<CartItem />', () => {
     it('should show the item name passed in props', () => {
       const removeFromCartFunction = jest.fn();
 
-      render(<CartItem cartItem={cartItem} removeFromCart={removeFromCartFunction} />);
+      render(
+        <ThemeProvider theme={theme}>
+          <CartItem cartItem={cartItem} removeFromCart={removeFromCartFunction} />
+        </ThemeProvider>);
 
       const cartItemNameElement = screen.getByText(cartItem.name);
 
@@ -19,7 +24,10 @@ describe('<CartItem />', () => {
     it('should show the item description passed in props', () => {
       const removeFromCartFunction = jest.fn();
 
-      render(<CartItem cartItem={cartItem} removeFromCart={removeFromCartFunction} />);
+      render(
+        <ThemeProvider theme={theme}>
+          <CartItem cartItem={cartItem} removeFromCart={removeFromCartFunction} />
+        </ThemeProvider>);
 
       const cartItemDescriptionElement = screen.getByText(cartItem.description);
 
@@ -31,7 +39,10 @@ describe('<CartItem />', () => {
     it('should call the removeFromCart function', () => {
       const removeFromCartFunction = jest.fn();
 
-      render(<CartItem cartItem={cartItem} removeFromCart={removeFromCartFunction} />);
+      render(
+        <ThemeProvider theme={theme}>
+          <CartItem cartItem={cartItem} removeFromCart={removeFromCartFunction} />
+        </ThemeProvider>);
 
       const removeFromCartButton = screen.getByRole('button', { name: 'Remove from cart' });
 
