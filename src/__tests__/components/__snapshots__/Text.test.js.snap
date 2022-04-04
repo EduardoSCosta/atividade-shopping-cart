@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Text /> renders the Text component correctly 1`] = `
+<standard
+  className="Text-sc-niwa38-0 cTPvbh"
+>
+  Text
+</standard>
+`;
