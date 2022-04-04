@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> renders the Input component correctly 1`] = `
+<div
+  className="Input__InputWrapper-sc-xsgpoy-0 jHeDlm"
+>
+  <label
+    className="Input__StyledLabel-sc-xsgpoy-1 feVAIP"
+  />
+  <input
+    className="Input__StyledInput-sc-xsgpoy-2 iWyBLt"
+  />
+</div>
+`;
