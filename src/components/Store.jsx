@@ -45,7 +45,7 @@ const Store = ({ productsList = PRODUCTS_LIST }) => {
           removeFromCart={removeFromCart}
           goToCheckout={() => setCurrentPage(CHECKOUT_PAGE)}
         />}
-      {(currentPage === CHECKOUT_PAGE) && <Checkout />}
+      {(currentPage === CHECKOUT_PAGE) && <Checkout cartItems={cartItems} />}
     </>
   );
 }

@@ -63,7 +63,7 @@ describe('<Review />', () => {
     it('should show only the last four number of the card passed in props', () => {
       render(<Review formValues={formValues} />);
 
-      const cardNumberElement = screen.getByText(`XXXX-XXXX-${formValues.cardNumber.slice(-4)}`);
+      const cardNumberElement = screen.getByText(`XXXX-XXXX-XXXX-${formValues.cardNumber.slice(-4)}`);
 
       expect(cardNumberElement).toBeInTheDocument();
     });
