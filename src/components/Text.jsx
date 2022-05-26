@@ -15,7 +15,7 @@ const getTextVariantStyles = (variant, theme) => {
 }
 
 export const Text = styled.h1({
-    color: ({ theme }) => theme.colors.black,
+    color: ({ theme }) => theme.colors.textColor,
     marginBottom: ({ gutterBottom, theme }) => gutterBottom ? theme.space[3] : 0,
     textAlign: ({ align }) => align,
     fontSize: ({ variant, theme }) => getTextVariantStyles(variant, theme)

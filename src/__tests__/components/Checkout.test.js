@@ -2,7 +2,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
 import Checkout from '../../components/Checkout';
-import theme from '../../theme';
+import themes from '../../theme';
+
+const theme = themes.light;
 
 const fillAddressForm = () => {
   const firstNameElement = screen.getByRole('textbox', { name: /first name/i });

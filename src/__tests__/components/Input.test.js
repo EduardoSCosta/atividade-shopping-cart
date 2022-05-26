@@ -1,7 +1,9 @@
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
 import { Input } from '../../components';
-import theme from '../../theme';
+import themes from '../../theme';
+
+const theme = themes.light;
 
 describe('<Input />', () => {
   it('renders the Input component correctly', () => {

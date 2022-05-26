@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../theme';
+import themes from '../../theme';
 import Review from '../../components/Checkout/Review';
+
+const theme = themes.light;
 
 describe('<Review />', () => {
   describe('when the component is rendered', () => {

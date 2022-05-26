@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../theme';
+import themes from '../../theme';
 import SelectPageBtn from '../../components/SelectPageBtn';
+
+const theme = themes.light;
 
 describe('<SelectPageBtn />', () => {
   describe('when the button is clicked', () => {

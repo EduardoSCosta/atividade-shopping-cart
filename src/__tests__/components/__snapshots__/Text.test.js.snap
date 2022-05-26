@@ -2,7 +2,7 @@
 
 exports[`<Text /> renders the Text component correctly 1`] = `
 <h1
-  className="Text-sc-niwa38-0 cTPvbh"
+  className="Text-sc-niwa38-0 geQEdv"
 >
   Text
 </h1>

@@ -37,4 +37,23 @@ const theme = {
   sizes
 }
 
-export default theme;
+const themes = {
+  light: {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      backgroundColor: '#f9f9f9',
+      textColor: '#2b2b2b'
+    }
+  },
+  dark: {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      backgroundColor: '#2b2b2b',
+      textColor: '#f9f9f9'
+    }
+  }
+}
+
+export default themes;

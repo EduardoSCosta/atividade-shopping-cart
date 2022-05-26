@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../theme';
+import themes from '../../theme';
 import Product from '../../components/Product';
+
+const theme = themes.light;
 
 describe('<Product />', () => {
   const product = { id: 1, name: 'test product', description: 'test description' };

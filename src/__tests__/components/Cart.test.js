@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../theme';
+import themes from '../../theme';
 import Cart from '../../components/Cart';
+
+const theme = themes.light;
 
 describe('<Cart />', () => {
   const cartItems = [

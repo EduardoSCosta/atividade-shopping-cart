@@ -2,7 +2,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
 import Store from '../../components/Store';
-import theme from '../../theme';
+import themes from '../../theme';
+
+const theme = themes.light;
 
 describe('<Store />', () => {
   const products = [

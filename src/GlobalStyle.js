@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle({
   },
   body: {
     fontFamily: 'sans-serif',
-    backgroundColor: ({ theme }) => theme.colors.gray50
+    backgroundColor: ({ theme }) => theme.colors.backgroundColor
   }
 })
 

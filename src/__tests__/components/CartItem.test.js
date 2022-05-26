@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../theme';
+import themes from '../../theme';
 import CartItem from '../../components/CartItem';
+
+const theme = themes.light;
 
 describe('<CartItem />', () => {
   const cartItem = { id: 1, name: 'test cartItem', description: 'test description' };

@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import AddressForm from '../../components/Checkout/AddressForm';
-import theme from '../../theme';
+import themes from '../../theme';
+
+const theme = themes.light;
 
 describe('<AdressForm />', () => {
   describe('when the component is rendered', () => {
